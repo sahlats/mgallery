@@ -1,0 +1,79 @@
+class Employee(models.Model):
+
+      name=models.charfield(max_length=200)
+
+      position=models.charfield(max_length=200)
+
+      office=models.charfield(max_length=200)
+
+      age=models.positiveintegerfield(max_length=200)
+
+      start_date=models.datefield(max_length=200)
+
+      salary=models.positiveintegerfield(max_length=200)
+
+
+q1>query for adding a new records
+ans) Employee.objects.create(
+    id=1,
+    name='sahla',
+    position='qa',
+    age=21,
+    start_date=Date(14-06-2024)
+    salary=500000,
+    office="malta"
+)
+
+q2>query from updating an employee record
+
+>Employee.objects.filter(id=1).update(salary=60000, office="kochi")
+
+
+q3>query for filtering employees with age and salary
+
+qs-Employee.objects.filter(age=40, salary=50000)
+
+
+q4>query for deleting employee recor
+
+
+Employee.objects.filter(id=1).delete()
+
+
+q5>employees with salary> 25000
+
+qs=Employee.objects.filter(salary_gte=25000)
+
+q6>filtering employees with office tokyo
+
+
+qs-Employee.objects.filter(office="tokyo")
+
+q7>query for fetching all records
+
+qs-Employee.objects.all()
+
+q8-employees with salary in range of 25k to 50k
+
+qs-Employee.objects.filter(salary_gte=25000, salary_lte=50000)
+
+q9>sort employee wrt salary order by asc
+
+qs-Employee.objects.all().order_by("salary") #asc
+
+qs-Employee.objects.all().order_by("-salary") #Desc
+
+qs-Employee.objects.all().order_by("-age")
+
+q10 employee with highest salary
+
+qs-
+     #aggregatefunction
+     #count(),max(),min(),sum(),avg()
+    max_salary=Employee.objects.all().values("salary").aggregate(salary=max("salary"))
+    min_salary=Employee.objects.all().values("salary").aggregate(salary=min("salary"))
+
+q11-group employee with respect to office
+
+qs-ofiice_summary=Employee.objects.all().values('office').annoatete(cnt=count("office))
+     
